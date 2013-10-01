@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace WpfLeech
 {
@@ -15,60 +16,70 @@ namespace WpfLeech
         private string _title;
         private bool _infotext;
         private bool _timestamp;
-        private enum _colors
+        private string _colors;
+        private int _location;
+
+        public int Location
         {
-            _ffffff,
-            _000000,
-            _ff0000,
-            _8b0000,
-            _008000,
-            _006400,
-            _0000ff,
-            _00008b,
-            _00ffff,
-            _008b8b,
-            _ff00ff,
-            _8b008b,
-            _ffff00,
-            _808080,
-            _a9a9a9,
-            _d3d3d3,
-        }
-        private enum _localtion
-        {
-            Lower_Left = 1,
-            Lower_Right = 2,
-            Upper_Right = 3,
-            Upper_Left = 4,
+            set
+            {
+                swith (value)
+                {
+                    case "Lower Left": this._location = 1; break;
+                    case "Lower Right": this._location = 2; break;
+                    case "Upper Right": this._location = 3; break;
+                    case "Upper Left": this._location = 4;
+                    default: this._location = null;
+                }
+            }
         }
 
-        /*private string RGB(string Colors) 
+        public string Colors
         {
-            Dictionary<string, string> _colors = new Dictionary<string, string>();
-            _colors.Add("White", "ffffff");
-            _colors.Add("Black", "000000");
-            _colors.Add("Red", "ff0000");
-            _colors.Add("DarkRed", "8b0000");
-            _colors.Add("Green", "008000");
-            _colors.Add("DarkGreen", "006400");
-            _colors.Add("Blue", "0000ff");
-            _colors.Add("DarkBlue", "00008b");
-            _colors.Add("Cyan", "00ffff");
-            _colors.Add("DarkCyan", "008b8b");
-            _colors.Add("Magenta", "ff00ff");
-            _colors.Add("DarkMagenta", "8b008b");
-            _colors.Add("Yellow", "ffff00");
-            _colors.Add("Gray", "808080");
-            _colors.Add("DarkGray", "a9a9a9");
-            _colors.Add("LightGray", "d3d3d3");
-            return _colors[Colors];
+            set
+            {
+                swith (value)
+                {
+                    case 0: this._colors = "ffffff"; break;
+                    case 1: this._colors = "000000"; break;
+                    case 2: this._colors = "ff0000"; break;
+                    case 3: this._colors = "8b0000"; break;
+                    case 4: this._colors = "008000"; break;
+                    case 5: this._colors = "006400"; break;
+                    case 6: this._colors = "0000ff"; break;
+                    case 7: this._colors = "00008b"; break;
+                    case 8: this._colors = "00ffff"; break;
+                    case 9: this._colors = "008b8b"; break;
+                    case 10: this._colors = "ff00ff"; break;
+                    case 11: this._colors = "8b008b"; break;
+                    case 12: this._colors = "ffff00"; break;
+                    case 13: this._colors = "808080"; break;
+                    case 14: this._colors = "a9a9a9"; break;
+                    case 15: this._colors = "d3d3d3"; break;
+                    default: this._colors = null;
+                }
+            }
         }
 
         /*private void mtn(int Rows,int Coloumns,int Withs,int Wap,string Title,string Location,string Colors)
         {
 
         }*/
-        
+
+
+        private void start(string argu)
+        {
+            string file = Application.StartUpPath + @"Data/mtn/mtn.exe";
+            System.Diagnostics.Process pro1 = new System.Diagnostics.Process();
+            pro1.StartInfo.FileName = file;
+            pro1.StartInfo.CreateNoWindow = true;
+            pro1.StartInfo.UseShellExecute = false;
+            pro1.StartInfo.RedirectStandardOutput = false;
+            pro1.StartInfo.Arguments = argu;
+            pro1.Start();
+            pro1.Close();
+        }
+
 
         public void epx1()
         {

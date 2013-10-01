@@ -245,7 +245,6 @@
 										</StackPanel>
 									</ComboBoxItem>
 								</ComboBox>
-								
 								<CheckBox VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,95,2,0" Content="Info Text:"/>
 								<dxe:SpinEdit VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,95,7,0" Width="110" Value="12"/>
 								<ComboBox VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,125,0,0" Width="110" SelectedIndex="2">
